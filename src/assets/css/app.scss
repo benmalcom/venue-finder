@@ -1,0 +1,254 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700');
+body{
+  font-family: Montserrat, sans-serif !important;
+}
+.current-location{
+  color: #7FD4B8;
+}
+.top-bar{
+  background-color: #0E7451;
+}
+.top-bar-inner{
+  height: 25vh;
+}
+.white-overlay{
+  margin-top: -2.5rem;
+}
+
+.venue-item{
+  box-sizing: border-box;
+  border-radius: 4px;
+  padding: 20px 0;
+  margin: 5px;
+}
+
+.venue-item .marker-image{
+  height: 80px;
+  width: 60px;
+}
+
+/*
+Utils*/
+.input-custom{
+  color: #999 !important;
+  border: 1px solid #efefef !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+  background-color: #FAFAFA !important;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+.input-custom.white{
+  background-color: #FFF !important;
+  border: 1px solid #f0f0f0 !important;
+  font-family: Montserrat, sans-serif;
+  font-size: 12px;
+  line-height: 1.19;
+  color: #a0a0a0 !important;
+}
+.btn-xs {
+  padding  : .25rem .4rem;
+  font-size  : .6rem;
+  line-height  : .7rem;
+  border-radius : .2rem;
+}
+a{
+  text-decoration: none !important;
+}
+.br-5{
+  border-radius: 5px !important;
+}
+
+.mb-0 {
+  margin-bottom: 0 !important;
+}
+.mt-30 {
+  margin-top: 30px !important;
+}
+.mt-0 {
+  margin-top: 0 !important;
+}
+.pt-5 {
+  padding-top: 5px !important;
+}
+
+.p-0 {
+  padding: 0 !important;
+}
+
+.pl-0 {
+  padding-left: 0px !important;
+}
+
+/*
+Background colors*/
+
+.bg-white {
+  background-color: white !important;
+}
+.inline{display: inline !important;}
+.inline-block{display: inline-block !important;}
+.block{display: block;}
+
+.text-white {
+  color: white !important;
+}
+
+.text-xxs {
+  font-size: 9px !important;
+}
+
+.text-xs {
+  font-size: 10px !important;
+}
+
+.text-sm {
+  font-size: 12px !important;
+}
+
+.text-md {
+  font-size: 16px !important;
+}
+
+.text-lg {
+  font-size: 18px !important;
+}
+
+.text-xlg {
+  font-size: 26px !important;
+}
+
+.text-elg {
+  font-size: 32px !important;
+  line-height: 16px;
+}
+
+.text-xxlg {
+  font-size: 40px !important;
+  line-height: 16px;
+}
+
+.text-capitalize {
+  text-transform: uppercase !important;
+}
+
+.shadow-lite{
+  box-shadow: rgba(0,0,0,0.2) 0 0 1px !important;
+}
+.shadow{
+  box-shadow: rgba(0,0,0,0.2) 0 0 5px !important;
+}
+
+.center-content{
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center; /* align horizontal */
+  -webkit-align-items: center;
+  align-items: center; /* align vertical */
+}
+.simplebox, select, textarea {
+  outline: none;
+  /*  border: none !important;*/
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  border-radius: 3px;
+}
+
+.btn-custom{
+  color: #FFF !important;
+  opacity: 0.9;
+  border: 1px solid #0E7451;
+  background-color: #0E7451;
+  padding: 10px !important;
+  font-size: 11px !important;
+  font-weight: 900 !important;
+  -webkit-box-shadow: 0 0 1px #0E7451;
+  -moz-box-shadow: 0 0 1px #0E7451;
+  box-shadow: 0 0 1px #0E7451;
+  border-radius: 1px;
+}
+
+/*
+  ##Device = Most of the Smart phones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+@media (min-width: 320px) and (max-width: 480px){
+  .top-bar-inner{
+    height: auto;
+    padding: 15px 0;
+  }
+  .white-overlay{
+    margin: 10px !important;
+    margin-top: -1rem !important;
+    padding: 0 15px 5px 15px;
+  }
+  .white-overlay form{
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+  .venue-item{
+    margin: 5px !important;
+  }
+
+  .offcanvas {
+    position: relative;
+    left: 0;
+  }
+  .offcanvas .sidebar-offcanvas {
+    left: -100%; /* 6 columns */
+    position: absolute !important;
+    top: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    z-index: 999;
+  }
+  .offcanvas.active {
+    left: 100%; /* 6 columns */
+  }
+}
+/*
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+@media (min-width: 481px) and (max-width: 767px) {
+}
+
+/*
+##Device = Tablets, Ipads (landscape)
+##Screen = B/w 768px to 1024px
+*/
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape){
+}
+
+/*
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+@media (min-width: 768px) and (max-width: 1024px) {
+
+
+}
+
+/*
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+@media (min-width: 1025px) and (max-width: 1280px) {
+
+}
+
+/*
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+@media (min-width: 1281px) {
+
+}
+
