@@ -1,0 +1,23 @@
+<template>
+    <div class="col-md-11 mx-auto mt-30 pl-1">
+        <a class="btn btn-sm btn-filter btn-outline-secondary d-sm-none mb-3"
+           data-toggle="offcanvas">
+            <i class="fa fa-filter"></i> Filter</a>
+        <h5 class="ml-2"><strong>Available Venues</strong></h5>
+        <div class="row p-0">
+            <Venue></Venue>
+        </div>
+    </div>
+</template>
+
+<script>
+    import Venue from './Venue.vue';
+	export default {
+		name: 'VenueList',
+        components: {Venue}
+	}
+</script>
+
+<style scoped>
+
+</style>

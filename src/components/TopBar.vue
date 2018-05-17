@@ -6,7 +6,7 @@
             </div>
             <div class="offset-md-3 col-md-3 mt-3 d-flex align-items-center">
                 <div class="media">
-                    <label class="mr-3 text-white"><i class="fa fa-map-marker-alt fa-2x"></i></label>
+                    <label class="mr-2 text-white"><i class="fa fa-map-marker fa-2x"></i></label>
                     <div class="media-body text-white">
                         <h5 class="text-sm mb-0">Cras purus odio, vestibulum in vulputate.</h5>
                         <p class="text-xs current-location mt-0">Current location</p>
@@ -19,7 +19,15 @@
 
 <script>
 	export default {
-		name: 'TopBar'
+		name: 'TopBar',
+        props: {
+
+        },
+        data: function () {
+            return {
+
+            }
+        }
 	}
 </script>
 
