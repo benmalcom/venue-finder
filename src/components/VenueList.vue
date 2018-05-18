@@ -5,7 +5,7 @@
             <i class="fa fa-filter"></i> Filter</a>
         <h5 class="ml-2"><strong>Available Venues</strong></h5>
         <div class="row p-0">
-            <Venue></Venue>
+            <Venue v-for="(value,key) in venues" :venue="value" :key="key"></Venue>
         </div>
     </div>
 </template>
@@ -14,6 +14,7 @@
     import Venue from './Venue.vue';
 	export default {
 		name: 'VenueList',
+        props: ['venues'],
         components: {Venue}
 	}
 </script>

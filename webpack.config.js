@@ -90,8 +90,7 @@ module.exports = {
 			jquery: 'jquery',
 			'window.jQuery': 'jquery',
 			'window.$': 'jquery',
-			jQuery: 'jquery',
-			axios: 'axios'
+			jQuery: 'jquery'
 		})
 
 	]

@@ -10,18 +10,19 @@
                         </div>
                         <div class="col-md-3">
                             <label class="text-muted text-sm"><strong>LOCATION</strong></label>
-                            <input type="text" v-model="filter.location" class="form-control mb-2 input-custom white"  placeholder="Type location here">
+                            <input type="text" v-model="searchFilter.location" class="form-control mb-2 input-custom white"  placeholder="Type location here">
                         </div>
                         <div class="col-md-3">
                             <label class="text-muted text-sm"><strong>RADIUS</strong></label>
-                            <select class="shadow-lite mb-2 selectpicker" v-model="filter.radius">
+                            <select class="shadow-lite mb-2 form-control" v-model="searchFilter.radius">
                                 <option value="">-- select --</option>
                             </select>
                         </div>
                         <div class="col-md-3">
                             <label class="text-muted text-sm"><strong>VENUE TYPE</strong></label>
-                            <select class="shadow-lite mb-2 selectpicker" v-model="filter.venue_type">
-                                <option value="">-- select --</option>
+                            <select class="shadow-lite mb-2 form-control" v-model="searchFilter.venue_type">
+                                <option value=''>-- select --</option>
+                                <option v-for="category in categories" :value="category.id">{{category.shortName}}</option>
                             </select>
                         </div>
 
@@ -38,14 +39,24 @@
 <script>
 	export default {
 		name: 'FilterBox',
+        props: ['categories'],
+        created(){
+		    console.log('categories created', this.categories);
+        },
         data: function () {
             return {
-            	filter: {location: null, radius: null, venue_type: null}
+            	searchFilter: {location: null, radius: null, venue_type: null}
             }
         },
         methods: {
 			applyFilter(){
-				console.log('Filter applied ', this.filter);
+				console.log('Filter applied ', this.searchFilter);
+				if(this.searchFilter.location ||
+                    this.searchFilter.radius ||
+                    this.searchFilter.venue_type) {
+					console.log('emitting ');
+					this.$emit('new-search-filter', this.searchFilter);
+                }
             }
         }
 	}
