@@ -10,7 +10,9 @@
                         </div>
                         <div class="col-md-3">
                             <label class="text-muted text-sm"><strong>LOCATION</strong></label>
-                            <input type="text" v-model="searchFilter.query" class="form-control mb-2 input-custom white"  placeholder="Type location here">
+                            <input type="text" v-model="searchFilter.query"
+                                   class="form-control mb-2 input-custom white"
+                                   placeholder="E.g London business school">
                         </div>
                         <div class="col-md-3">
                             <label class="text-muted text-sm"><strong>WITHIN</strong></label>
@@ -30,7 +32,7 @@
                         </div>
 
                         <div class="col-md-2 col-12 mt-30">
-                            <button type="submit" class="btn btn-custom btn-block close-filter">Update</button>
+                            <button type="submit" class="btn btn-custom btn-block close-filter">Apply</button>
                         </div>
                     </div>
                 </form>

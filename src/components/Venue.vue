@@ -1,4 +1,6 @@
 <template>
+    <transition name="fade">
+
     <div class="col-md-4 col-sm-6">
         <div class="row venue-item col-sm-12 col-12 text-right shadow">
             <div class="col-md-3 col-3 center-content">
@@ -27,6 +29,7 @@
             </div>
         </div>
     </div>
+    </transition>
 </template>
 
 <script>
@@ -77,5 +80,10 @@
 </script>
 
 <style scoped>
-
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity .5s;
+    }
+    .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+        opacity: 0;
+    }
 </style>
