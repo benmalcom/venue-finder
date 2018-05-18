@@ -3,7 +3,9 @@
         <div class="row venue-item col-sm-12 col-12 text-right shadow">
             <div class="col-md-3 col-3 center-content">
                 <div class="ml-auto circle circle-md center-content business-image-placeholder">
-                    <img src="../assets/images/venue-marker.png" class="marker-image">
+                    <img v-bind:src="photo" v-if="photo"
+                          class="marker-image">
+                    <img src="../assets/images/venue-marker.png" v-else class="marker-image">
                 </div>
             </div>
             <div class="col-md-9 col-9 center-content pl-0">
@@ -28,6 +30,7 @@
 </template>
 
 <script>
+    import axios from '../axios';
 	export default {
 		name: 'Venue',
         props: ['venue'],
@@ -35,7 +38,11 @@
 			return {
 			    category: null,
                 address: null,
+                photo: null,
             };
+        },
+        created(){
+		    this.getPhoto(this.venue);
         },
         methods: {
 			getFormattedAddress(location){
@@ -55,7 +62,16 @@
             },
             getCategory(venue){
                 return venue.categories &&  venue.categories.length ? venue.categories[0] : null;
-            }
+            },
+	        getPhoto(venue){
+		        axios.get(`${venue.id}/photos`)
+			        .then((response) =>{
+                        const item = response['photos']['items'][0];
+				        if(item) {
+					        this.photo = `${item.prefix}original${item.suffix}`;
+                        }
+			        }, (error) => console.log('error ', error));
+	        }
         }
 	}
 </script>

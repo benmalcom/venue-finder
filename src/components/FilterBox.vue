@@ -3,26 +3,29 @@
         <div class="row sidebar-offcanvas">
             <div class="shadow col-md-9 mx-auto bg-white white-overlay br-5 pt-5">
                 <a class="btn d-sm-none text-muted close-filter pl-0"><i class="fa fa-times"></i></a>
-                <form v-on:submit.prevent="applyFilter()">
+                <form v-on:submit.prevent="applyFilter(searchFilter)">
                     <div class="row">
                         <div class="col-md-1 col-12 d-flex align-items-center">
                             <p class=""><strong>Filter</strong></p>
                         </div>
                         <div class="col-md-3">
                             <label class="text-muted text-sm"><strong>LOCATION</strong></label>
-                            <input type="text" v-model="searchFilter.location" class="form-control mb-2 input-custom white"  placeholder="Type location here">
+                            <input type="text" v-model="searchFilter.query" class="form-control mb-2 input-custom white"  placeholder="Type location here">
                         </div>
                         <div class="col-md-3">
-                            <label class="text-muted text-sm"><strong>RADIUS</strong></label>
+                            <label class="text-muted text-sm"><strong>WITHIN</strong></label>
                             <select class="shadow-lite mb-2 form-control" v-model="searchFilter.radius">
                                 <option value="">-- select --</option>
+                                <option v-for="distance in distances" v-bind:value="distance.value">
+                                    {{distance.label}}
+                                </option>
                             </select>
                         </div>
                         <div class="col-md-3">
                             <label class="text-muted text-sm"><strong>VENUE TYPE</strong></label>
-                            <select class="shadow-lite mb-2 form-control" v-model="searchFilter.venue_type">
-                                <option value=''>-- select --</option>
-                                <option v-for="category in categories" :value="category.id">{{category.shortName}}</option>
+                            <select class="shadow-lite mb-2 form-control" v-model="searchFilter.categoryId">
+                                <option selected disabled value="">-- select --</option>
+                                <option v-for="category in categories" v-bind:value="category.id">{{category.shortName}}</option>
                             </select>
                         </div>
 
@@ -37,25 +40,30 @@
     </div>
 </template>
 <script>
+    import _ from 'underscore';
 	export default {
 		name: 'FilterBox',
         props: ['categories'],
-        created(){
-		    console.log('categories created', this.categories);
-        },
         data: function () {
             return {
-            	searchFilter: {location: null, radius: null, venue_type: null}
+            	distances: [
+                    {label: '500 Meters', value: 500},
+		            {label: '1km', value: 1000},
+		            {label: '5km', value: 5000},
+            		{label: '10km', value: 10000},
+                    {label: '20km', value: 20000},
+		            {label: '50km', value: 50000},
+	            ],
+            	searchFilter: {query: null, radius: null, categoryId: null}
             }
         },
         methods: {
-			applyFilter(){
-				console.log('Filter applied ', this.searchFilter);
-				if(this.searchFilter.location ||
-                    this.searchFilter.radius ||
-                    this.searchFilter.venue_type) {
-					console.log('emitting ');
-					this.$emit('new-search-filter', this.searchFilter);
+			applyFilter(data){
+				const obj = _.pick(data, function(value, key, object) {
+					return value !=null;
+				});
+                if (!_.isEmpty(obj)) {
+	                this.$emit('search-filter', obj);
                 }
             }
         }
@@ -63,7 +71,4 @@
 </script>
 
 <style scoped>
-.selectpicker{
-    border-radius: 5px !important;
-}
 </style>
