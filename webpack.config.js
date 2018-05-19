@@ -1,6 +1,17 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
+
+// the path(s) that should be cleaned
+const pathsToClean = ['dist'];
+
+// the clean options to use
+const cleanOptions = {
+	root: __dirname,
+	verbose: false,
+	dry: false
+};
 
 module.exports = {
 	module: {
@@ -81,6 +92,7 @@ module.exports = {
 		],
 	},
 	plugins: [
+		new CleanWebpackPlugin(pathsToClean, cleanOptions),
 		new HtmlWebpackPlugin({
 			template: './src/index.html'
 		}),
