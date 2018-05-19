@@ -32,19 +32,26 @@
         created: async function() {
 	        try{
 		        this.loading = true;
+
+		        // Get user current location for use in further requests
 		        const position = await getCurrentPosition();
 		        const  {latitude, longitude} = position.coords;
 		        this.currentPosition =  {latitude, longitude};
 		        this.$Progress.start();
+
+		        // Get venues around a user based on user location
 		        const { venues } = await axios.get('/search', { params: {
 				        ll: `${latitude},${longitude}`}
 		        });
 		        this.venues = venues;
 
+		        // Get venue categories to enable user filter by venue type
 		        const { categories } = await axios.get('/categories');
+		        this.venueCategories = categories.map(({id, shortName}) => ({id, shortName}));
+
+		        // Stop progress bar and loading indicator
 		        this.$Progress.finish();
 		        this.loading = false;
-		        this.venueCategories = categories.map(({id, shortName}) => ({id, shortName}));
 
 	        } catch (e) {
 		        this.$Progress.fail();
