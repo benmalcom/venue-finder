@@ -20,10 +20,10 @@
                     <h6 class="text-sm text-muted">
                         {{getFormattedAddress(venue.location)}}
                     </h6>
-                    <span class="badge badge-secondary text-white" v-if="getCategory(venue)">
+                    <label class="badge badge-secondary text-white text-xs" v-if="getCategory(venue)">
                         <i class="fa fa-tags"></i> {{ getCategory(venue).name }}
-                    </span>
-                    <span class="badge badge-warning text-white" v-else><i class="fa fa-tags"></i> Not Available</span>
+                    </label>
+                    <label class="badge badge-warning text-white text-xs" v-else><i class="fa fa-tags"></i> Not Available</label>
 
                 </div>
             </div>
