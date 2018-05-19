@@ -40,6 +40,7 @@
     "sass-loader": "^7.0.1",
     "underscore": "^1.9.0",
     "vue": "^2.5.16",
-    "vue-progressbar": "^0.7.5"
+    "vue-progressbar": "^0.7.5",
+    "vue2-animate": "^2.0.0"
   }
 }

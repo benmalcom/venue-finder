@@ -210,8 +210,8 @@ Background colors*/
     box-sizing: border-box !important;
     z-index: 999;
   }
-  .offcanvas.active {
-    left: 100%; /* 6 columns */
+  .offcanvas.active .sidebar-offcanvas{
+    left: 0; /* 6 columns */
   }
 }
 /*

@@ -24,11 +24,6 @@
 	export default {
 		name: 'App',
 		components: {FilterBox, TopBar, VenueList, Wrapper, InfoBoard},
-		mounted() {
-			const offCanvas = $('.offcanvas');
-			$('[data-toggle=offcanvas]').click(() => offCanvas.toggleClass('active'));
-			$('.close-filter').click(() => offCanvas.toggleClass('active'));
-		},
         created: async function() {
 	        try{
 		        this.loading = true;

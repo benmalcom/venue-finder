@@ -15,6 +15,10 @@
 	export default {
 		name: 'VenueList',
         props: ['venues'],
+		mounted() {
+			$('[data-toggle=offcanvas]').click(() => $('.offcanvas').toggleClass('active'));
+			$('.close-filter').click(() => $('.offcanvas').toggleClass('active'));
+		},
         components: {Venue}
 	}
 </script>

@@ -1,5 +1,5 @@
 <template>
-    <transition name="fade">
+    <transition name="fadeUp" enter-active-class="fadeUp">
 
     <div class="col-md-4 col-sm-6">
         <div class="row venue-item col-sm-12 col-12 text-right shadow-lite">
@@ -31,6 +31,11 @@
     </div>
     </transition>
 </template>
+
+<style lang="scss">
+    $animationDuration: 0.5s; // specify animation duration. Default value: 1s
+    @import "~vue2-animate/dist/vue2-animate.min.css";
+</style>
 
 <script>
     import axios from '../../axios';
@@ -78,12 +83,3 @@
         }
 	}
 </script>
-
-<style scoped>
-    .fade-enter-active, .fade-leave-active {
-        transition: opacity .5s;
-    }
-    .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-        opacity: 0;
-    }
-</style>
