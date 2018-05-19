@@ -5,9 +5,9 @@
         <div class="row venue-item col-sm-12 col-12 text-right shadow-lite">
             <div class="col-md-3 col-3 center-content">
                 <div class="ml-auto circle circle-md center-content business-image-placeholder">
-                    <img v-bind:src="photo" v-if="photo"
-                          class="marker-image">
-                    <img src="../../assets/images/venue-marker.png" v-else class="marker-image">
+                    <!--<img v-bind:src="photo" v-if="photo"
+                          class="marker-image">-->
+                    <img src="../../assets/images/venue-marker.png" class="marker-image">
                 </div>
             </div>
             <div class="col-md-9 col-9 center-content pl-0">

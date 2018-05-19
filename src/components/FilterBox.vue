@@ -44,19 +44,13 @@
 </template>
 <script>
     import _ from 'underscore';
+    import distances from '../json/distances';
 	export default {
 		name: 'FilterBox',
         props: ['categories'],
         data: function () {
             return {
-            	distances: [
-                    {label: '500 Meters', value: 500},
-		            {label: '1km', value: 1000},
-		            {label: '5km', value: 5000},
-            		{label: '10km', value: 10000},
-                    {label: '20km', value: 20000},
-		            {label: '50km', value: 50000},
-	            ],
+            	distances,
             	searchFilter: {query: null, radius: null, categoryId: null}
             }
         },
