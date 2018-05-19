@@ -16,8 +16,9 @@
                         </div>
                         <div class="col-md-3">
                             <label class="text-muted text-sm"><strong>WITHIN</strong></label>
-                            <select class="shadow-lite mb-2 form-control" v-model="searchFilter.radius">
-                                <option value="">-- select --</option>
+                            <select class="shadow-lite mb-2 form-control text-sm" v-model="searchFilter.radius">
+                                <option :value=null disabled selected>-- Select radius --</option>
+                                <option :value=null>Anywhere around</option>
                                 <option v-for="distance in distances" v-bind:value="distance.value">
                                     {{distance.label}}
                                 </option>
@@ -25,8 +26,8 @@
                         </div>
                         <div class="col-md-3">
                             <label class="text-muted text-sm"><strong>VENUE TYPE</strong></label>
-                            <select class="shadow-lite mb-2 form-control" v-model="searchFilter.categoryId">
-                                <option selected disabled value="">-- select --</option>
+                            <select class="shadow-lite mb-2 form-control text-sm" v-model="searchFilter.categoryId">
+                                <option :value=null disabled selected>-- Select category --</option>
                                 <option v-for="category in categories" v-bind:value="category.id">{{category.shortName}}</option>
                             </select>
                         </div>

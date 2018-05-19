@@ -7,7 +7,7 @@ const defaultOptions = {
 		client_id: appConfig.FOURSQUARE_CLIENT_ID,
 		client_secret: appConfig.FOURSQUARE_CLIENT_SECRET,
 		limit: 12,
-		v: '20180719'
+		v: '20180720'
 	},
 	headers: {
 		'Content-Type': 'application/json',

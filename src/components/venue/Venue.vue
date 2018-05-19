@@ -2,12 +2,12 @@
     <transition name="fade">
 
     <div class="col-md-4 col-sm-6">
-        <div class="row venue-item col-sm-12 col-12 text-right shadow">
+        <div class="row venue-item col-sm-12 col-12 text-right shadow-lite">
             <div class="col-md-3 col-3 center-content">
                 <div class="ml-auto circle circle-md center-content business-image-placeholder">
                     <img v-bind:src="photo" v-if="photo"
                           class="marker-image">
-                    <img src="../assets/images/venue-marker.png" v-else class="marker-image">
+                    <img src="../../assets/images/venue-marker.png" v-else class="marker-image">
                 </div>
             </div>
             <div class="col-md-9 col-9 center-content pl-0">
@@ -21,9 +21,9 @@
                         {{getFormattedAddress(venue.location)}}
                     </h6>
                     <span class="badge badge-secondary text-white" v-if="getCategory(venue)">
-                        {{ getCategory(venue).name }}
+                        <i class="fa fa-tags"></i> {{ getCategory(venue).name }}
                     </span>
-                    <span class="badge badge-warning text-white" v-else>Not Available</span>
+                    <span class="badge badge-warning text-white" v-else><i class="fa fa-tags"></i> Not Available</span>
 
                 </div>
             </div>
@@ -33,7 +33,7 @@
 </template>
 
 <script>
-    import axios from '../axios';
+    import axios from '../../axios';
 	export default {
 		name: 'Venue',
         props: ['venue'],
