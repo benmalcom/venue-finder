@@ -1,6 +1,7 @@
 ## Find Venue
-Solution to adyen coding challenge.
+##### Solution to adyen coding challenge.
 Project is implemented with [vuejs](https://vuejs.org "vuejs' website") as frontend
+
 Here is the [demo](https://find-venue.herokuapp.com "Adyen's coding challenge"); 
 
 ### Getting started
