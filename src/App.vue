@@ -3,16 +3,8 @@
         <vue-progress-bar></vue-progress-bar>
         <TopBar :position="currentPosition"></TopBar>
         <FilterBox :categories="venueCategories" @search-filter="onSearchFilter"></FilterBox>
+        <InfoBoard :current-position="currentPosition" :loading="loading"></InfoBoard>
         <VenueList v-if="currentPosition" :venues="venues"></VenueList>
-        <div class="alert alert-warning col-md-9 mx-auto mt-30" v-if="!currentPosition && loading">
-            Trying to access your location...
-        </div>
-        <div class="alert alert-info col-md-9 mx-auto mt-30" v-else-if="currentPosition && loading">
-            Getting venues...
-        </div>
-        <div class="alert alert-danger col-md-9 mx-auto mt-30" v-else-if="!currentPosition && !loading">
-            Unable display venues, please refresh your browser if this takes long
-        </div>
     </Wrapper>
 </template>
 <style lang="scss">
@@ -26,38 +18,32 @@
     import FilterBox from './components/FilterBox.vue';
     import VenueList from './components/venue/VenueList.vue';
     import Wrapper from './components/Wrapper.vue';
+    import InfoBoard from './components/InfoBoard.vue';
     import axios from './axios';
     import { getCurrentPosition } from './config';
 	export default {
 		name: 'App',
-		components: {FilterBox, TopBar, VenueList, Wrapper},
-		mounted: function () {
-			$('[data-toggle=offcanvas]').click(function () {
-				$('.offcanvas').toggleClass('active');
-			});
-			$('.close-filter').click(function () {
-				$('.offcanvas').toggleClass('active');
-			});
+		components: {FilterBox, TopBar, VenueList, Wrapper, InfoBoard},
+		mounted() {
+			const offCanvas = $('.offcanvas');
+			$('[data-toggle=offcanvas]').click(() => offCanvas.toggleClass('active'));
+			$('.close-filter').click(() => offCanvas.toggleClass('active'));
 		},
         created: async function() {
 	        try{
-		        this.$Progress.start();
 		        this.loading = true;
 		        const position = await getCurrentPosition();
 		        const  {latitude, longitude} = position.coords;
 		        this.currentPosition =  {latitude, longitude};
-
-
-		        let response = await axios.get('/search', { params: {
+		        this.$Progress.start();
+		        const { venues } = await axios.get('/search', { params: {
 				        ll: `${latitude},${longitude}`}
 		        });
-		        this.venues = response.venues;
+		        this.venues = venues;
 
-		        response = await axios.get('/categories');
+		        const { categories } = await axios.get('/categories');
 		        this.$Progress.finish();
 		        this.loading = false;
-		        const { categories } = response;
-		        console.log('categories ', categories);
 		        this.venueCategories = categories.map(({id, shortName}) => ({id, shortName}));
 
 	        } catch (e) {
@@ -81,12 +67,12 @@
 		        try{
 			        this.$Progress.start();
 			        const  {latitude, longitude} = this.currentPosition;
-			        const response = await axios.get('/search', { params: {
+			        const { venues } = await axios.get('/search', { params: {
 			        	    ll: `${latitude},${longitude}`, ...data
 			            }
 			        });
 			        this.$Progress.finish();
-			        this.venues = [...response.venues];
+			        this.venues = [...venues];
 		        } catch (e) {
 			        this.$Progress.fail();
 			        console.log('error ', e.message);
