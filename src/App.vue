@@ -19,7 +19,7 @@
     import VenueList from './components/venue/VenueList.vue';
     import Wrapper from './components/Wrapper.vue';
     import InfoBoard from './components/InfoBoard.vue';
-    import axios from './axios';
+    import axios from './helpers/axios';
     import { getCurrentPosition } from './config';
 	export default {
 		name: 'App',

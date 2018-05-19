@@ -38,7 +38,8 @@
 </style>
 
 <script>
-    import axios from '../../axios';
+    import axios from '../../helpers/axios';
+    import { getCategory, getFormattedAddress } from '../../helpers';
 	export default {
 		name: 'Venue',
         props: ['venue'],
@@ -53,24 +54,8 @@
 		    this.getPhoto(this.venue);
         },
         methods: {
-			getFormattedAddress(location){
-                let address = "";
-			    if(location.formattedAddress && location.formattedAddress.length) {
-					address = location.formattedAddress[0];
-				}
-				else if (location.address || location.city || location.city || location.country) {
-                	address += location.address ? `,${location.address}` : '';
-                	address += location.city ? `,${location.city}` : '';
-                	address += location.state ? `,${location.state}` : '';
-                	address += location.country ? `,${location.country}` : '';
-                } else {
-					address = "Not available";
-                }
-                return address;
-            },
-            getCategory(venue){
-                return venue.categories &&  venue.categories.length ? venue.categories[0] : null;
-            },
+			getFormattedAddress,
+            getCategory,
 	        getPhoto(venue){
 		        axios.get(`${venue.id}/photos`)
 			        .then((response) =>{

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import appConfig from './config';
+import appConfig from '../config/index';
 // Default config options
 const defaultOptions = {
 	baseURL: appConfig.API_BASE_URL,
