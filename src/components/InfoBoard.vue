@@ -6,7 +6,7 @@
         Getting venues...
     </div>
     <div class="alert alert-danger col-md-9 mx-auto mt-20 text-sm" v-else-if="!currentPosition && !loading">
-        Unable display venues, please refresh your browser if this takes long
+        Unable display venues, please enable location services and/or refresh your browser if this takes long
     </div>
 </template>
 
