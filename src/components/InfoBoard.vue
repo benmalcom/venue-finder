@@ -1,11 +1,11 @@
 <template>
-    <div class="alert alert-warning col-md-9 mx-auto mt-20 text-sm" v-if="!currentPosition && loading">
+    <div class="alert alert-warning col-md-9 mx-auto text-sm" v-if="!currentPosition && loading">
         Trying to access your location...
     </div>
-    <div class="alert alert-info col-md-9 mx-auto mt-20 text-sm" v-else-if="currentPosition && loading">
+    <div class="alert alert-info col-md-9 mx-auto text-sm" v-else-if="currentPosition && loading">
         Getting venues...
     </div>
-    <div class="alert alert-danger col-md-9 mx-auto mt-20 text-sm" v-else-if="!currentPosition && !loading">
+    <div class="alert alert-danger col-md-9 mx-auto text-sm" v-else-if="!currentPosition && !loading">
         Unable display venues, please enable location services and/or refresh your browser if this takes long
     </div>
 </template>
