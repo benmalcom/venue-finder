@@ -3,8 +3,10 @@
         <vue-progress-bar></vue-progress-bar>
         <TopBar :position="currentPosition"></TopBar>
         <FilterBox :categories="venueCategories" @search-filter="onSearchFilter"></FilterBox>
-        <InfoBoard :current-position="currentPosition" :loading="loading"></InfoBoard>
-        <VenueList v-if="currentPosition" :venues="venues"></VenueList>
+
+        <InfoBoard v-if="message" :message="message"></InfoBoard>
+
+        <VenueList v-if="venues" :venues="venues"></VenueList>
     </Wrapper>
 </template>
 <style lang="scss">
@@ -26,12 +28,12 @@
 		components: {FilterBox, TopBar, VenueList, Wrapper, InfoBoard},
         created: async function() {
 	        try{
-		        this.loading = true;
-
 		        // Get user current location for use in further requests
 		        const position = await getCurrentPosition();
 		        const  {latitude, longitude} = position.coords;
 		        this.currentPosition =  {latitude, longitude};
+		        // Update display message
+		        this.updateMessage('Getting venues...');
 		        this.$Progress.start();
 
 		        // Get venues around a user based on user location
@@ -39,6 +41,8 @@
 				        ll: `${latitude},${longitude}`}
 		        });
 		        this.venues = venues;
+		        // Update display message
+		        this.updateMessage(null);
 
 		        // Get venue categories to enable user filter by venue type
 		        const { categories } = await axios.get('/categories');
@@ -46,24 +50,27 @@
 
 		        // Stop progress bar and loading indicator
 		        this.$Progress.finish();
-		        this.loading = false;
 
 	        } catch (e) {
+		        // Update display message
+		        this.updateMessage(`Your location is either not enabled or it's a network error, please refresh browser...`);
 		        this.$Progress.fail();
-		        this.loading = false;
 		        console.log('error ', e.message);
 	        }
         },
 		data() {
 			return {
 				currentPosition: null,
-				loading: false,
 				searchFilter: {},
 				venueCategories: [],
-				venues: []
+				venues: null,
+                message: 'Tyring to access your location...'
 			};
 		},
         methods: {
+			updateMessage: function(message) {
+				this.message = message;
+            },
 	        onSearchFilter: async function(data) {
 		        Object.assign(this.searchFilter, data);
 		        try{
@@ -73,11 +80,11 @@
 			        	    ll: `${latitude},${longitude}`, ...data
 			            }
 			        });
+			        this.updateMessage(!venues.length ? 'No venues available' : null);
 			        this.$Progress.finish();
 			        this.venues = [...venues];
 		        } catch (e) {
 			        this.$Progress.fail();
-			        console.log('error ', e.message);
 		        }
 	        }
         }

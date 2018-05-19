@@ -3,7 +3,7 @@
         <a class="btn btn-sm btn-filter btn-outline-secondary d-sm-none mb-3"
            data-toggle="offcanvas">
             <i class="fa fa-filter"></i> Filter</a>
-        <h5 class="ml-2"><strong>Available Venues</strong></h5>
+        <h5 class="ml-2" v-if="venues && venues.length"><strong>Available Venues</strong></h5>
         <div class="row p-0">
             <Venue v-for="(value,key) in venues" :venue="value" :key="key"></Venue>
         </div>
@@ -12,6 +12,7 @@
 
 <script>
     import Venue from './Venue.vue';
+    import InfoBoard from '../InfoBoard.vue';
 	export default {
 		name: 'VenueList',
         props: ['venues'],
@@ -19,7 +20,7 @@
 			$('[data-toggle=offcanvas]').click(() => $('.offcanvas').toggleClass('active'));
 			$('.close-filter').click(() => $('.offcanvas').toggleClass('active'));
 		},
-        components: {Venue}
+        components: {Venue, InfoBoard}
 	}
 </script>
 

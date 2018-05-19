@@ -1,6 +1,4 @@
 <template>
-    <transition name="fadeUp" enter-active-class="fadeUp">
-
     <div class="col-md-4 col-sm-6">
         <div class="row venue-item col-sm-12 col-12 text-right shadow-lite">
             <div class="col-md-3 col-3 center-content">
@@ -29,13 +27,7 @@
             </div>
         </div>
     </div>
-    </transition>
 </template>
-
-<style lang="scss">
-    $animationDuration: 0.5s; // specify animation duration. Default value: 1s
-    @import "~vue2-animate/dist/vue2-animate.min.css";
-</style>
 
 <script>
     import axios from '../../helpers/axios';

@@ -1,18 +1,12 @@
 <template>
-    <div class="alert alert-warning col-md-9 mx-auto text-sm" v-if="!currentPosition && loading">
-        Trying to access your location...
-    </div>
-    <div class="alert alert-info col-md-9 mx-auto text-sm" v-else-if="currentPosition && loading">
-        Getting venues...
-    </div>
-    <div class="alert alert-danger col-md-9 mx-auto text-sm" v-else-if="!currentPosition && !loading">
-        Unable display venues, please enable location services and/or refresh your browser if this takes long
+    <div class="alert alert-warning col-md-9 mx-auto text-sm mt-2">
+        {{message}}
     </div>
 </template>
 
 <script>
 	export default {
 		name: 'InfoBoard',
-        props: ['currentPosition','loading']
+        props: ['message']
 	}
 </script>
