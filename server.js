@@ -12,9 +12,9 @@ const port = process.env.PORT || 8000;
 server.listen(port);
 
 function requireHTTPS(req, res, next) {
-	if (req.secure) {
-		return next();
+	if (!req.secure) {
+		return res.redirect('https://' + req.get('host') + req.url);
 		//FYI this should work for local development as well
 	}
-	return res.redirect('https://' + req.get('host') + req.url);
+	return next();
 }
