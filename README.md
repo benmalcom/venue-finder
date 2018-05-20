@@ -12,5 +12,5 @@ Here is the [demo](https://find-venue.herokuapp.com "Adyen's coding challenge")
 
 ### Test
 
-Some couple of tests implemented. Run `npm test`
+Implemented some couple of tests cases. Run `npm test`
 
