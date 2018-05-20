@@ -1,6 +1,6 @@
 <template>
     <!-- wrapper template -->
-    <div class="wrapper flex-grow">
+    <div class="wrapper">
         <slot></slot>
     </div>
 </template>

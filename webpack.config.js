@@ -1,4 +1,3 @@
-const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
@@ -96,14 +95,6 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			template: './src/index.html'
 		}),
-		new VueLoaderPlugin(),
-		new webpack.ProvidePlugin({
-			$: 'jquery',
-			jquery: 'jquery',
-			'window.jQuery': 'jquery',
-			'window.$': 'jquery',
-			jQuery: 'jquery'
-		})
-
+		new VueLoaderPlugin()
 	]
 };

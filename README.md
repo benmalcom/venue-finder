@@ -10,4 +10,7 @@ Here is the [demo](https://find-venue.herokuapp.com "Adyen's coding challenge")
 * Run `npm run dev` to start development server
 * Run `npm run build` for webpack build (build directory is `dist`)
 
+### Test
+
+Some couple of tests implemented. Run `npm test`
 

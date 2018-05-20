@@ -3,9 +3,7 @@
         <vue-progress-bar></vue-progress-bar>
         <TopBar :position="currentPosition"></TopBar>
         <FilterBox :categories="venueCategories" @search-filter="onSearchFilter"></FilterBox>
-
         <InfoBoard v-if="message" :message="message" alert-class=""></InfoBoard>
-
         <VenueList v-if="venues" :venues="venues"></VenueList>
     </Wrapper>
 </template>
@@ -54,6 +52,7 @@
 		        // Get venues around a user based on user location
 		        const { venues } = await axios.get('/search');
 		        this.venues = venues;
+		        console.log('venues ', venues[0]);
 		        // Update display message
 		        this.updateMessage(null);
 
@@ -93,16 +92,16 @@
             },
 	        /**
              * @function onSearchFilter, executed when a new search filter is received from child component, FilterBar
-	         * @param data
+	         * @param obj
 	         * @return {Promise<void>}
 	         */
-	        onSearchFilter: async function(data) {
-		        Object.assign(this.searchFilter, data);
+	        onSearchFilter: async function(obj) {
+		        Object.assign(this.searchFilter, obj);
 		        try{
 		        	this.venues = null;
 			        this.updateMessage(messages.gettingVenues);
 			        this.$Progress.start();
-			        const { venues } = await axios.get('/search', { params: {...data } });
+			        const { venues } = await axios.get('/search', { params: {...this.searchFilter } });
 			        // Update user on the request result
 			        this.updateMessage(!venues.length ? messages.noVenues : null);
 			        this.$Progress.finish();

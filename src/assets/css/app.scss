@@ -17,15 +17,19 @@ body{
 
 .venue-item{
   box-sizing: border-box;
-  border-radius: 4px;
-  padding: 20px 0;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
   margin: 5px;
-  height: 120px;
+  height: 130px;
+  max-height: 130px;
+  overflow-y: hidden;
 }
-
+.venue-item .name{
+  font-size: 12px;
+}
 .venue-item .marker-image{
-  height: 80px;
-  width: 60px;
+  height: 6rem;
+  width: 4rem;
 }
 
 /*

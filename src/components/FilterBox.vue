@@ -44,7 +44,7 @@
 </template>
 <script>
     import _ from 'underscore';
-    import distances from '../json/distances';
+    import distances from '../json/distances.json';
 	export default {
 		name: 'FilterBox',
         props: ['categories'],

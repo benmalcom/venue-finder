@@ -8,15 +8,15 @@ export const getFormattedAddress = (location) => {
 	if(location.formattedAddress && location.formattedAddress.length) {
 		address = location.formattedAddress[0];
 	}
-	else if (location.address || location.city || location.city || location.country) {
-		address += location.address ? `,${location.address}` : '';
-		address += location.city ? `,${location.city}` : '';
-		address += location.state ? `,${location.state}` : '';
-		address += location.country ? `,${location.country}` : '';
+	else if (location.address || location.city || location.state || location.country) {
+		address += location.address || '';
+		address += location.city || '';
+		address += location.state || '';
+		address += location.country || '';
 	} else {
 		address = "Not available";
 	}
-	return address;
+	return address.length > 50 ? address.substring(0, 49) : address;
 };
 
 /**
@@ -24,7 +24,12 @@ export const getFormattedAddress = (location) => {
  * @param venue
  * @return {null}
  */
-export const getCategory = (venue) => venue.categories &&  venue.categories.length ? venue.categories[0] : null;
+export const getCategory = (venue) => {
+	if (venue.categories &&  venue.categories.length) {
+		return venue.categories.filter((category) => category.primary === true)[0];
+	}
+	return null;
+};
 
 // Predefined feedback message
 export const messages = {

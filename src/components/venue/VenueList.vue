@@ -12,7 +12,7 @@
 
 <script>
     import Venue from './Venue.vue';
-    import InfoBoard from '../InfoBoard.vue';
+    import $ from 'jquery';
 	export default {
 		name: 'VenueList',
         props: ['venues'],
@@ -21,7 +21,7 @@
 			$('[data-toggle=offcanvas]').click(() => $('.offcanvas').toggleClass('active'));
 			$('.close-filter').click(() => $('.offcanvas').toggleClass('active'));
 		},
-        components: {Venue, InfoBoard}
+        components: {Venue}
 	}
 </script>
 
