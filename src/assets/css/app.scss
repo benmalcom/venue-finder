@@ -2,6 +2,18 @@
 body{
   font-family: Montserrat, sans-serif !important;
 }
+.full-height{
+  height: 100%;
+}
+.full-width{
+  width: 100%;
+}
+.pt-30{
+  padding-top: 15px;
+}
+.border-dashed{
+  border: 2px solid #000;
+}
 .current-location{
   color: #7FD4B8;
 }
@@ -25,11 +37,12 @@ body{
   overflow-y: hidden;
 }
 .venue-item .name{
-  font-size: 12px;
+  font-size: 17px;
 }
 .venue-item .marker-image{
-  height: 6rem;
-  width: 4rem;
+  height: 100%;
+  width: 100%;
+  margin: auto auto;
 }
 
 /*

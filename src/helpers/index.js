@@ -16,17 +16,21 @@ export const getFormattedAddress = (location) => {
 	} else {
 		address = "Not available";
 	}
-	return address.length > 50 ? address.substring(0, 49) : address;
+	return address.length > 54 ? `${address.substring(0, 57)}...` : address;
 };
 
 /**
  * @function returns category from a venue object.
  * @param venue
- * @return {null}
+ * @return {null || string}
  */
 export const getCategory = (venue) => {
 	if (venue.categories &&  venue.categories.length) {
-		return venue.categories.filter((category) => category.primary === true)[0];
+		const category = venue.categories.filter((category) => category.primary === true)[0];
+		if (category) {
+			const {name} = category;
+			return name.length > 25 ? `${name.substring(0, 25)}...` : name;
+		}
 	}
 	return null;
 };
