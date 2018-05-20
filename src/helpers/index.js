@@ -15,3 +15,9 @@ export const getFormattedAddress = (location) => {
 };
 
 export const getCategory = (venue) => venue.categories &&  venue.categories.length ? venue.categories[0] : null;
+export const messages = {
+	accessingLocation: 'Trying to access your location',
+	noLocationOrRefresh: `Your location is either not enabled or it's a network error, please refresh browser...`,
+	noVenues: 'No venues available',
+	gettingVenues: 'Getting venues...'
+};

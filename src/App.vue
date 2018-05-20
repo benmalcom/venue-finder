@@ -4,7 +4,7 @@
         <TopBar :position="currentPosition"></TopBar>
         <FilterBox :categories="venueCategories" @search-filter="onSearchFilter"></FilterBox>
 
-        <InfoBoard v-if="message" :message="message"></InfoBoard>
+        <InfoBoard v-if="message" :message="message" alert-class=""></InfoBoard>
 
         <VenueList v-if="venues" :venues="venues"></VenueList>
     </Wrapper>
@@ -22,7 +22,9 @@
     import Wrapper from './components/Wrapper.vue';
     import InfoBoard from './components/InfoBoard.vue';
     import axios from './helpers/axios';
+    import {messages} from './helpers';
     import { getCurrentPosition } from './config';
+
 	export default {
 		name: 'App',
 		components: {FilterBox, TopBar, VenueList, Wrapper, InfoBoard},
@@ -33,7 +35,7 @@
 		        const  {latitude, longitude} = position.coords;
 		        this.currentPosition =  {latitude, longitude};
 		        // Update display message
-		        this.updateMessage('Getting venues...');
+		        this.updateMessage(messages.gettingVenues);
 		        this.$Progress.start();
 
 		        // Get venues around a user based on user location
@@ -53,7 +55,7 @@
 
 	        } catch (e) {
 		        // Update display message
-		        this.updateMessage(`Your location is either not enabled or it's a network error, please refresh browser...`);
+		        this.updateMessage(messages.noLocationOrRefresh, 'warning');
 		        this.$Progress.fail();
 		        console.log('error ', e.message);
 	        }
@@ -64,23 +66,27 @@
 				searchFilter: {},
 				venueCategories: [],
 				venues: null,
-                message: 'Tyring to access your location...'
+                message: messages.accessingLocation,
+                alertClass: 'info'
 			};
 		},
         methods: {
-			updateMessage: function(message) {
+			updateMessage: function(message, alertClass='info') {
 				this.message = message;
+				this.alertClass = alertClass;
             },
 	        onSearchFilter: async function(data) {
 		        Object.assign(this.searchFilter, data);
 		        try{
+		        	this.venues = null;
+			        this.updateMessage(messages.gettingVenues);
 			        this.$Progress.start();
 			        const  {latitude, longitude} = this.currentPosition;
 			        const { venues } = await axios.get('/search', { params: {
 			        	    ll: `${latitude},${longitude}`, ...data
 			            }
 			        });
-			        this.updateMessage(!venues.length ? 'No venues available' : null);
+			        this.updateMessage(!venues.length ? messages.noVenues : null);
 			        this.$Progress.finish();
 			        this.venues = [...venues];
 		        } catch (e) {
