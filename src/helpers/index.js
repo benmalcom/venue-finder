@@ -1,3 +1,8 @@
+/**
+ * @function getFormattedAddress, get a formatted address from a venues' location
+ * @param location
+ * @return {string}
+ */
 export const getFormattedAddress = (location) => {
 	let address = "";
 	if(location.formattedAddress && location.formattedAddress.length) {
@@ -14,7 +19,14 @@ export const getFormattedAddress = (location) => {
 	return address;
 };
 
+/**
+ * @function returns category from a venue object.
+ * @param venue
+ * @return {null}
+ */
 export const getCategory = (venue) => venue.categories &&  venue.categories.length ? venue.categories[0] : null;
+
+// Predefined feedback message
 export const messages = {
 	accessingLocation: 'Trying to access your location',
 	noLocationOrRefresh: `Your location is either not enabled or it's a network error, please refresh browser...`,

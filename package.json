@@ -8,7 +8,7 @@
     "dev": "webpack-dev-server --mode development --progress --hot --open",
     "build": "webpack --mode production --progress",
     "start": "node server",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "deploy": "git push origin master && git push heroku master"
   },
   "keywords": [],
@@ -16,6 +16,7 @@
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.26.3",
+    "babel-jest": "^22.4.4",
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-3": "^6.24.1",
@@ -24,11 +25,14 @@
     "font-awesome-loader": "^1.0.2",
     "html-webpack-plugin": "^3.2.0",
     "image-webpack-loader": "^4.2.0",
+    "jest": "^22.4.4",
+    "jest-vue-preprocessor": "^1.4.0",
     "style-loader": "^0.21.0",
     "url-loader": "^1.0.1",
     "vue-loader": "^15.0.11",
     "vue-style-loader": "^4.1.0",
     "vue-template-compiler": "^2.5.16",
+    "vue-test-utils": "^1.0.0-beta.11",
     "webpack": "^4.8.3",
     "webpack-cli": "^2.1.3",
     "webpack-dev-server": "^3.1.4"
@@ -47,5 +51,19 @@
     "vue": "^2.5.16",
     "vue-progressbar": "^0.7.5",
     "vue2-animate": "^2.0.0"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "^vue$": "vue/dist/vue.common.js"
+    },
+    "moduleFileExtensions": [
+      "js",
+      "vue"
+    ],
+    "transform": {
+      "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
+      ".*\\.(vue)$": "<rootDir>/node_modules/jest-vue-preprocessor"
+    }
   }
+
 }

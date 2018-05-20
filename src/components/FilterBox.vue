@@ -48,13 +48,17 @@
 	export default {
 		name: 'FilterBox',
         props: ['categories'],
-        data: function () {
+        data() {
             return {
             	distances,
             	searchFilter: {query: null, radius: null, categoryId: null}
             }
         },
         methods: {
+	        /**
+             * @function Get's the applied filter and emits as an object to the parent component (Wrapper)
+	         * @param data the searchFilter data property bound to the filter form
+	         */
 			applyFilter(data){
 				const obj = _.pick(data, function(value, key, object) {
 					return value !=null;

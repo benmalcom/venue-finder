@@ -1,6 +1,7 @@
 import axios from 'axios';
 import appConfig from '../config/index';
-// Default config options
+
+// Default config options for sending requests
 const defaultOptions = {
 	baseURL: appConfig.API_BASE_URL,
 	params: {
@@ -13,6 +14,14 @@ const defaultOptions = {
 		'Content-Type': 'application/json',
 	}
 };
+
+/**
+ * @function updateAxiosParams
+ * @param obj the params object to merge the existing axios request's query parameters
+ */
+export function updateAxiosParams(obj) {
+	Object.assign(defaultOptions.params, obj);
+}
 
 // Create instance
 const instance = axios.create(defaultOptions);

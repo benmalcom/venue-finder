@@ -30,7 +30,6 @@
 </template>
 
 <script>
-    import axios from '../../helpers/axios';
     import { getCategory, getFormattedAddress } from '../../helpers';
 	export default {
 		name: 'Venue',
@@ -42,21 +41,9 @@
                 photo: null,
             };
         },
-        created(){
-		    this.getPhoto(this.venue);
-        },
         methods: {
 			getFormattedAddress,
-            getCategory,
-	        getPhoto(venue){
-		        axios.get(`${venue.id}/photos`)
-			        .then((response) =>{
-                        const item = response['photos']['items'][0];
-				        if(item) {
-					        this.photo = `${item.prefix}original${item.suffix}`;
-                        }
-			        }, (error) => console.log('error ', error));
-	        }
+            getCategory
         }
 	}
 </script>

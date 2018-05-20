@@ -17,6 +17,7 @@
 		name: 'VenueList',
         props: ['venues'],
 		mounted() {
+			// Bind mobile toggling click events for filter
 			$('[data-toggle=offcanvas]').click(() => $('.offcanvas').toggleClass('active'));
 			$('.close-filter').click(() => $('.offcanvas').toggleClass('active'));
 		},
