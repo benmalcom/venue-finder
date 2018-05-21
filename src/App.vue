@@ -65,7 +65,7 @@
 
 	        } catch (e) {
 		        // Update display message
-		        this.updateMessage(messages.noLocationOrRefresh, 'warning');
+		        this.updateMessage(messages.errorGettingVenues, 'warning');
 		        this.$Progress.fail();
 		        console.log('error ', e.message);
 	        }
@@ -108,7 +108,7 @@
 			        this.venues = [...venues];
 		        } catch (e) {
 			        // Update user on the request result
-			        this.updateMessage('Error getting venues please refresh browser ', 'danger');
+			        this.updateMessage(messages.errorGettingVenues, 'danger');
 			        this.$Progress.fail();
 		        }
 	        }

@@ -38,7 +38,7 @@ export const getCategory = (venue) => {
 // Predefined feedback message
 export const messages = {
 	accessingLocation: 'Trying to access your location',
-	noLocationOrRefresh: `Your location is either not enabled or it's a network error, please refresh browser...`,
+	errorGettingVenues: `Error getting venues! Please enable your location services or refresh your browser`,
 	noVenues: 'No venues available',
 	gettingVenues: 'Getting venues...'
 };
