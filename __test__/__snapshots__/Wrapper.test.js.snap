@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Component: Wrapper.vue Has the expected html structure 1`] = `
-<div
-  class="wrapper"
-/>
-`;

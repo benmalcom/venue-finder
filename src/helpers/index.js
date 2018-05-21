@@ -28,8 +28,8 @@ export const getCategory = (venue) => {
 	if (venue.categories &&  venue.categories.length) {
 		const category = venue.categories.filter((category) => category.primary === true)[0];
 		if (category) {
-			const {name} = category;
-			return name.length > 25 ? `${name.substring(0, 25)}...` : name;
+			const {shortName} = category;
+			return shortName.length > 30 ? `${shortName.substring(0, 29)}...` : shortName;
 		}
 	}
 	return null;
