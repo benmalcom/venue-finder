@@ -10,7 +10,7 @@
         props: ['message', 'alertClass'],
         data(){
 			return {
-				infoBoardClass: `alert alert-${this.alertClass || 'info'} col-md-9 mx-auto text-sm mt-2`
+				infoBoardClass: `alert alert-${this.alertClass} col-md-9 mx-auto text-sm mt-2`
             }
         }
 	}
