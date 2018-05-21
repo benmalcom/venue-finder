@@ -86,9 +86,11 @@
 	         * @param message The message to be displayed to the user
 	         * @param alertClass the option class to be attached to the InfoBoard div child
 	         */
-			updateMessage: function(message, alertClass='info') {
+			updateMessage: function(message, alertClass=null) {
 				this.message = message;
-				this.alertClass = alertClass;
+				if(alertClass) {
+					this.alertClass = alertClass;
+				}
             },
 	        /**
              * @function onSearchFilter, executed when a new search filter is received from child component, FilterBar
