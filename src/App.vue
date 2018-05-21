@@ -3,7 +3,7 @@
         <vue-progress-bar></vue-progress-bar>
         <TopBar :position="currentPosition"></TopBar>
         <FilterBox :categories="venueCategories" @search-filter="onSearchFilter"></FilterBox>
-        <InfoBoard v-if="message" :message="message" alert-class=""></InfoBoard>
+        <InfoBoard v-if="message" :message="message" alert-class="alertClass"></InfoBoard>
         <VenueList v-if="venues" :venues="venues"></VenueList>
     </Wrapper>
 </template>
