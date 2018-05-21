@@ -1,5 +1,5 @@
 <template>
-    <div class="col-md-11 mx-auto mt-30 pl-1">
+    <div class="col-md-11 col-sm-12 mx-auto mt-30 pl-1">
         <a class="btn btn-sm btn-filter btn-outline-secondary d-sm-none mb-3"
            data-toggle="offcanvas">
             <i class="fa fa-filter"></i> Filter</a>

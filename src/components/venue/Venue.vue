@@ -4,7 +4,7 @@
             <div class="col-md-4 col-4 full-height full-width p-0">
                     <img src="../../assets/images/venue-marker.png" class="marker-image full-height full-width">
             </div>
-            <div class="col-md-8 col-8 pt-30">
+            <div class="col-md-8 col-8 pt-30 venue-item-details">
                 <div class="mr-auto text-left">
                     <h6 class="mb-1 mt-1">
                         <strong class="name">
@@ -14,10 +14,10 @@
                     <h6 class="text-sm text-muted address">
                         {{getFormattedAddress(venue.location)}}
                     </h6>
-                    <label class="badge badge-secondary text-white text-xs category" v-if="getCategory(venue)">
+                    <label class="badge bg-custom simplebox text-white text-xs category" v-if="getCategory(venue)">
                         <i class="fa fa-tags"></i> {{ getCategory(venue) }}
                     </label>
-                    <label class="badge badge-warning text-white text-xs category" v-else><i class="fa fa-tags"></i> Not Available</label>
+                    <label class="badge badge-danger simplebox text-white text-xs category" v-else><i class="fa fa-tags"></i> Not Available</label>
 
                 </div>
             </div>

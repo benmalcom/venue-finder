@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700');
+
 body{
   font-family: Montserrat, sans-serif !important;
 }
@@ -11,8 +12,9 @@ body{
 .pt-30{
   padding-top: 15px;
 }
-.border-dashed{
-  border: 2px solid #000;
+.bg-custom{
+  background-color: #0E7451;
+  color: #fff;
 }
 .current-location{
   color: #7FD4B8;
@@ -28,13 +30,10 @@ body{
 }
 
 .venue-item{
-  box-sizing: border-box;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
   margin: 5px;
   height: 130px;
-  max-height: 130px;
-  overflow-y: hidden;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
 }
 .venue-item .name{
   font-size: 17px;
@@ -42,40 +41,31 @@ body{
 .venue-item .marker-image{
   height: 100%;
   width: 100%;
-  margin: auto auto;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
 }
+.venue-item-details{
+  height: 100%;
+  max-height: 100%;
+  overflow-y: auto;
+}
+
 
 /*
 Utils*/
 .input-custom{
-  color: #999 !important;
   border: 1px solid #efefef !important;
   -webkit-box-shadow: none !important;
   -moz-box-shadow: none !important;
   box-shadow: none !important;
-  background-color: #FAFAFA !important;
   padding-top: 10px !important;
   padding-bottom: 10px !important;
 }
 .input-custom.white{
   background-color: #FFF !important;
-  border: 1px solid #f0f0f0 !important;
-  font-family: Montserrat, sans-serif;
   font-size: 12px;
   line-height: 1.19;
   color: #a0a0a0 !important;
-}
-.btn-xs {
-  padding  : .25rem .4rem;
-  font-size  : .6rem;
-  line-height  : .7rem;
-  border-radius : .2rem;
-}
-a{
-  text-decoration: none !important;
-}
-.br-5{
-  border-radius: 5px !important;
 }
 
 .mb-0 {
@@ -167,16 +157,6 @@ Background colors*/
   box-shadow: rgba(0,0,0,0.2) 0 0 5px !important;
 }
 
-.center-content{
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  justify-content: center; /* align horizontal */
-  -webkit-align-items: center;
-  align-items: center; /* align vertical */
-}
 .simplebox, select, textarea {
   outline: none;
   /*  border: none !important;*/
@@ -205,21 +185,27 @@ Background colors*/
   ##Screen = B/w 320px to 479px
 */
 @media (min-width: 320px) and (max-width: 480px){
+  .venue-item-details{
+    height: 100%;
+    max-height: 100%;
+    overflow-y: auto;
+  }
   .top-bar-inner{
     height: auto;
     padding: 15px 0;
   }
   .white-overlay{
-    margin: 10px !important;
-    margin-top: -1rem !important;
+    margin: 5px !important;
+    margin-top: -1rem;
     padding: 0 15px 25px 15px;
   }
   .white-overlay form{
     padding-top: 0 !important;
     margin-top: 0 !important;
   }
+
   .venue-item{
-    margin: 5px !important;
+    margin: 5px;
   }
 
   .offcanvas {
