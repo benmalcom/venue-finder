@@ -7,7 +7,7 @@
 <script>
 	export default {
 		name: 'InfoBoard',
-        props: ['message', 'alertClass'],
+        props: ['message', 'alert-class'],
         data(){
 			return {
 				infoBoardClass: `alert alert-${this.alertClass} col-md-9 mx-auto text-sm mt-2`
