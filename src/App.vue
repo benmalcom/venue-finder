@@ -52,7 +52,6 @@
 		        // Get venues around a user based on user location
 		        const { venues } = await axios.get('/search');
 		        this.venues = venues;
-		        console.log('venues ', venues[0]);
 		        // Update display message
 		        this.updateMessage(null);
 
@@ -67,7 +66,7 @@
 		        // Update display message
 		        this.updateMessage(messages.errorGettingVenues, 'warning');
 		        this.$Progress.fail();
-		        console.log('error ', e.message);
+		        // console.log('error ', e.message);
 	        }
         },
 		data() {
@@ -88,7 +87,7 @@
 	         */
 			updateMessage: function(message, alertClass=null) {
 				this.message = message;
-				if(alertClass) {
+				if (alertClass) {
 					this.alertClass = alertClass;
 				}
             },
