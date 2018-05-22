@@ -38,8 +38,7 @@ export const getCategory = (venue) => {
 // Predefined feedback message
 export const messages = {
 	accessingLocation: 'Trying to access your location',
-	errorGettingVenues: `Error getting venues! Please enable your location services or 
-	click <a href="htpps://find-venue.herokuapp.com"><b>here</b></a> to refresh`,
+	errorGettingVenues: `Error getting venues! Please enable your location services and/or refresh your browser`,
 	noVenues: 'No venues available',
 	gettingVenues: 'Getting venues...'
 };

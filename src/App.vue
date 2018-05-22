@@ -85,7 +85,7 @@
 	         * @param message The message to be displayed to the user
 	         * @param alertClass the option class to be attached to the InfoBoard div child
 	         */
-			updateMessage: function(message, alertClass=null) {
+			updateMessage: function(message, alertClass) {
 				this.message = message;
 				if (alertClass) {
 					this.alertClass = alertClass;

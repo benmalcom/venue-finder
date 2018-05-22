@@ -12,11 +12,6 @@
 			return {
 				infoBoardClass: `alert alert-${this.alertClass} col-md-9 mx-auto text-sm mt-2`
             }
-        },
-        watch: {
-			alertClass(value) {
-				return value;
-            }
         }
 	}
 </script>
